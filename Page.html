@@ -1,0 +1,227 @@
+<!doctype html>
+
+<html>
+  
+  <head>
+    <title>LogURL</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+     <link rel="stylesheet" href="css/logUrl.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./javascripts/logurl.js" ></script>
+
+    <style type="text/css">    
+         
+     ul.expandable li { list-style-type: none; }
+      li ul.expandable { display: none } /* выставить в none */
+
+
+      body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="navbar pull-left navbar-fixed-top navbar-default">
+      <div class="container clearfix">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">Logo(url)</a>
+        </div>
+        <div class="collapse navbar-collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">[User_name]</a>
+            </li>
+            <li>
+              <a href="#">Social</a>
+            </li>
+            <li>
+              <a href="#">Profile</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+            <li>
+              <a>About</a>
+            </li>
+            <li>
+              <a href="#">Exit</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- левая часть -->
+    <div class="container">
+      <div class="row ">
+        <div  class="col-md-4" id="Categories">
+          <h2 class="text-center">Categories</h2>
+          <br>
+          <!-- категории -->
+          <ul class="expandable  list-unstyled  " id="urlTree" >
+            <li>
+             <a href="#"> Category 1</a>  <!-- баджи можно изменить. либо что бы показывали кол-во ссылок в папке либо количуство подкатегорий в папке -->
+              <ul class="expandable" id="urlTreeb1">
+                <li><a href="#">subcategory 1</a></li>
+                <li>
+                  <a href="#">subcategory 2 </a>
+                  <ul class="expandable" id="urlTreeb2">
+                    <li><a href="#">sub-subcategory 1</a></li>
+                    <li><a href="#">sub-subcategory 2</a>
+                     <ul class="expandable" id="urlTreebranch">
+                <li><a href="#">subcategory 1</a></li>
+                <li><a href="#">subcategory 2</a> <ul class="expandable" id="urlTreebranch">
+                <li><a href="#">subcategory 1</a></li>
+                <li><a href="#">subcategory 2</a> <ul class="expandable" id="urlTreebranch">
+                <li><a href="#">subcategory 1</a></li>
+                <li><a href="#">subcategory 2</a></li>
+              </ul></li>
+              </ul></li>
+              </ul></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+               <a href="#">Category 2</a> 
+              <ul class="expandable" id="urlTreebranch">
+                <li><a href="#">subcategory 1</a></li>
+                <li><a href="#">subcategory 2</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Category 3 </a>
+              
+            </li>
+          </ul>
+          <div class="row">
+            <div class="col-md-12">
+              <a class="btn btn-success btn-block" id="categoryButton">Create new category</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="text-center">Kits</h2>
+              <!-- категории -->
+              <ol class="list-unstyled text-center" id="kitsList">
+                <li id="kit1">
+                  <a class="btn btn-warning">first kit</a>
+                </li>
+                <!-- подключить функции onclick с выводом урлов надора в правое "окно"-->
+                <li id="kit2">
+                  <a class="btn btn-primary">second kit</a>
+                </li>
+                <li id="kit3">
+                  <a class="btn btn-primary">third kit</a>
+                </li>
+              </ol>
+              <div class="row">
+                <div class="col-md-12">
+                  <a class="btn btn-success btn-block" id="categoryButton">Create new kit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- правая часть -->
+        <div class="col-md-8" id="Urls">
+          <h2 class="text-center">List of urls</h2>
+          <div class="row">
+            <div class="col-md-8" id="urlList">
+              <ol id=" urlList">
+                <li>
+                  <a href="#">http//.. url - или название сайта или поста...</a>
+                </li>
+                <li>
+                  <a href="#">http//.. url - или название сайта или поста...</a>
+                </li>
+                <li>
+                  <a href="#">http//.. url - или название сайта или поста...</a>
+                </li>
+                <li>
+                  <a href="#">http//.. url - или название сайта или поста...</a>
+                </li>
+                <li>
+                  <a href="#">http//.. url - или название сайта или поста...</a>
+                </li>
+              </ol>
+            </div>
+            <div class="col-md-4" id="listDescription">Зарезервированное место. Описание содержания urla и возможно скриншот, увеличивающийся при наведении... или нет
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9" id="urlAdd">
+              <input type="url" class="form-control" placeholder=" http://....." name="urlInput" id="urlInput">
+              <!-- при установке курсора в форму - минимальная проверка заполения формы делает кнопку Add url активной -->
+            </div>
+            <div class="col-md-3" id="urlKit">
+              <button class="btn btn-block btn-danger disabled" id="urlAddButton">Add url</button>
+            </div>
+          </div>
+          <h2 class="text-center">First kit</h2>
+          <div class="row" id="Kit">
+            <div class="col-md-8" id="KitList">
+              <!-- категории -->
+              <div class="checkbox" checked="checked">
+                <ol class="list-unstyled" id=" urlList">
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="#">http//.. url - или название сайта или поста...</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="#">http//.. url - или название сайта или поста...</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="#">http//.. url - или название сайта или поста...</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="#">http//.. url - или название сайта или поста...</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="#">http//.. url - или название сайта или поста...</a>
+                    </label>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="col-md-4" id="kitDescription">Зарезервированное место. Описание содержания urla и возможно скриншот, увеличивающийся при наведении... или нет
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn pull-right btn-danger disabled" id="urlKitButton">Load kit urls</button>
+              <!-- для активации кнопки - хот один чекбокс должен быть checked-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </body>
+
+</html>
+

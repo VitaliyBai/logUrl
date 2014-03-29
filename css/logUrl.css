@@ -1,0 +1,79 @@
+
+body {position: relative;}
+.form-container {
+   border: 0px solid #ffffff;
+   background: #ffffff;
+   -webkit-border-radius: 7px;
+   -moz-border-radius: 7px;
+   border-radius: 7px;
+   -webkit-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+   -moz-box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+   box-shadow: rgba(000,000,000,0.9) 0 1px 2px, inset rgba(255,255,255,0.4) 0 0px 0;
+   font-family: 'Helvetica Neue',Helvetica,sans-serif;
+   text-decoration: none;
+   vertical-align: middle;
+   min-width:300px;
+   padding:20px;
+   width:280px;  
+   display: none;
+   
+   }
+.form-field {
+   border: 1px solid #a3a3a3;
+   background: #ffffff;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   color: #ffffff;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
+   padding:5px;
+   margin:auto;
+   width:240px;
+   }
+.form-field:focus {
+   background: #fff;
+   color: #000000;
+   }
+.form-container h2 {
+   text-shadow: #ffffff 0 1px 0;
+   font-size:18px; 
+   text-align:center;
+   margin-top: 5px;
+   }
+.form-title {
+   margin-bottom:10px;
+   color: #000000;
+   text-shadow: #ffffff 0 1px 0;   
+   }
+.submit-container {
+   margin:10px 20px 0 0;
+   text-align:right;
+   }
+.submit-button {
+   border: 0px solid #8cc059;
+   background:#5CB85C;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   color: #ffffff;
+   font-family: helvetica, serif;
+   padding: 6.5px 15px;
+   font-size: 14px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.submit-button:hover {
+   border: 0px solid #447314;
+   background: #6aa436;
+   color: #fff;
+   }
+.submit-button:active {
+   border: 0px solid #447314;
+   background: #8dc059;
+  color: #fff;
+   }
