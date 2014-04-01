@@ -4,21 +4,12 @@
   
   <head>
     <title>LogURL</title>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
-     <link rel="stylesheet" href="css/logUrl.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./javascripts/logurl.js" ></script>
-
-    <style type="text/css">    
-         
-     ul.expandable li { list-style-image: url('./images/empty.png'); }
-      li ul.expandable { display: none } /* выставить в none */
-
-
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
       body {
         padding-top: 50px;
         padding-bottom: 20px;
@@ -53,7 +44,7 @@
               <a>About</a>
             </li>
             <li>
-              <a href="#">Exit</a>
+              <a>Exit</a>
             </li>
           </ul>
         </div>
@@ -61,63 +52,45 @@
     </div>
     <!-- левая часть -->
     <div class="container">
+      
       <div class="row">
-
-        <div class="col-md-4" id="kiCatNav">
-          <ul class="nav nav-tabs nav-justified">
-            <li class="active" id="catNav" data-toggle="categories">
-              <a>Categories</a>
-            </li>
-            <li id="kitNav" data-toggle="kits">
-              <a>Kits</a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-      <div class="row ">
-        <div  class="col-md-4">           
-          <div class="row ">
-            <div  class="col-md-12" id="categories">
-              <h2 class="text-center">Categories</h2>
-              <br>
-              <!-- категории -->
-              <ul class="expandable  list-unstyled" id="urlTree" >
+        <div class="col-md-4" id="Categories">
+          <h2 class="text-center">Categories</h2>
+          <br>
+          <!-- категории -->
+          <ul class="list-unstyled" id="urlTree">
+            <li>
+              <i class="fa fa-folder-open-o"></i> Category 1 <span class="badge">2</span> <!-- баджи можно изменить. либо что бы показывали кол-во ссылок в папке либо количуство подкатегорий в папке -->
+              <ul id="urlTreeb1">
+                <li>subcategory 1</li>
                 <li>
-                 <a> Category 1</a>  <!-- баджи можно изменить. либо что бы показывали кол-во ссылок в папке либо количуство подкатегорий в папке -->
-                  <ul id="urlTreeb1">
-                    <li><a>subcategory 1</a></li>
-                    <li>
-                      <a>subcategory 2 </a>
-                      <ul id="urlTreeb2">
-                        <li><a>sub-subcategory 1</a></li>
-                        <li><a>sub-subcategory 2</a>
-                         </li>
-                      </ul>
-                    </li>
+                  <i class="fa fa-folder-open-o"></i>subcategory 2 <span class="badge">2</span>
+                  <ul id="urlTreeb2">
+                    <li>sub-subcategory 1</li>
+                    <li>sub-subcategory 2</li>
                   </ul>
-                </li>
-                <li>
-                   <a>Category 2</a> 
-                  <ul id="urlTreebranch">
-                    <li><a>subcategory 1</a></li>
-                    <li><a>subcategory 2</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a>Category 3 </a>
-                  
                 </li>
               </ul>
-              <div class="row">
-                <div class="col-md-12">
-                  <a class="btn btn-success btn-block" id="newcategoryButton">Create new category</a>
-                </div>
-              </div>
-            </div>
-          </div>  
+            </li>
+            <li>
+              <i class="fa fa-folder-open-o"></i> Category 2 <span class="badge">2</span>
+              <ul id="urlTreebranch">
+                <li>subcategory 1</li>
+                <li>subcategory 2</li>
+              </ul>
+            </li>
+            <li>
+              <i class="fa fa-folder-o"></i> Category 3 <span class="badge">2</span>
+              <ul id="urlTreebranch"></ul>
+            </li>
+          </ul>
           <div class="row">
-            <div class="col-md-12 displayNone" id="kits">
+            <div class="col-md-12">
+              <a class="btn btn-success btn-block" id="categoryButton">Create new category</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
               <h2 class="text-center">Kits</h2>
               <!-- категории -->
               <ol class="list-unstyled text-center" id="kitsList">
@@ -134,7 +107,7 @@
               </ol>
               <div class="row">
                 <div class="col-md-12">
-                  <a class="btn btn-success btn-block" id="newKitButton">Create new kit</a>
+                  <a class="btn btn-success btn-block" id="categoryButton">Create new kit</a>
                 </div>
               </div>
             </div>
@@ -175,7 +148,7 @@
               <button class="btn btn-block btn-danger disabled" id="urlAddButton">Add url</button>
             </div>
           </div>
-            <div class="row">
+          <div class="row">
             <h3 class="text-center">some description</h3>
             <div class="row">
               <div class="col-md-12" id="buttonsPanel">
@@ -188,7 +161,7 @@
             </div>
             <div class="row" id="someId">
               <div class="col-md-8" id="someId">
-                <!-- категории -->screenshot<img src="http://lorempixel.com/500/500/">
+                <!-- категории -->screenshot<img src="https://builder.divshot.com/img/placeholder-100x100.gif">
               </div>
               <div class="col-md-4" id="someId">description etc. sharing
               </div>
@@ -198,10 +171,5 @@
       </div>
     </div>
   </body>
-          
-
-
-  </body>
 
 </html>
-

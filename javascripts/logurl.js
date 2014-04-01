@@ -1,7 +1,7 @@
 function setFormsButtons(){
 
 
-    var urlCategories = document.getElementById("Categories");
+    var urlCategories = document.getElementById("categories");
     var allLis = urlCategories.getElementsByTagName("li");
     for (var i = 0 ; i < allLis.length; i++) {
         var li = allLis[i];
@@ -29,11 +29,37 @@ function setFormsButtons(){
         return false;
         } // убираем возможность выделения ссылок
 
-    //ставим онклик на кнопку создания категорий
-    document.getElementById('categoryButton').onclick = function(){
-     
+    //ставим онклики на кнопки
+    document.getElementById('newcategoryButton').onclick = function(){ createNewkiCat('Category', "cat")};
+    document.getElementById('newKitButton').onclick = function(){ createNewkiCat('Kit', "kit")};
+    document.getElementById("kiCatNav").onclick = function(event){    
+        event = event || window.event;
+        var target = event.target || event.srcElement;
+        while (target !== this) {
+            if (target.tagName == "LI"){
+              var curDataId = target.getAttribute('data-toggle');  
+              var curBlock = document.getElementById(curDataId);
+                if (target.className == "аctive") return;
+                else {
+                     var activeData =  document.querySelector('#kiCatNav .active'); 
+                     var activeBlockId =  activeData.getAttribute("data-toggle");
+                     var activeBlock = document.getElementById(activeBlockId);
+
+                     activeData.className = "";       //меняем класс местами             
+                     target.className = "active";
+
+                     activeBlock.classList.toggle("displayNone");  //меняем местами видимый и невидимый элементы              
+                     curBlock.classList.toggle("displayNone");
+                }
+                break;
+            }
+         target = target.parentNode;  
+        };
+    }
+
+    function createNewkiCat(name, kitOrCat){     
         var formCreate = document.createElement("DIV");
-        formCreate.innerHTML += '<form class="form-container" > <h2>Create category</h2>  \
+        formCreate.innerHTML += '<form class="form-container" > <h2>Create new '+name+'</h2>  \
         <input class="form-control" type="text" name="text" placeholder ="enter category name" /><br />\
          <div class="submit-container">\
         <input class=" btn btn-danger " type="button" value="cancel"  name="cancel"/>\
@@ -59,28 +85,25 @@ function setFormsButtons(){
       
      
         //заменил onsubmit на onclick... костыль?
-        form.elements.createCategoryButton.onclick =  function(event) {
+        form.elements.createCategoryButton.onclick = function(){ return creatingKitCat(event);}
+
+
+        function creatingKitCat() {
             event = event || window.event;
             var target = event.target || event.srcElement;
             var value = form.elements.text.value;
             if (value == '' || value == false) return false; // игнорировать пустой submit
-            if (value.length >15) {
-                alert("сcategory name is too long")
+            if (value.length >15) { //чисто символически. либо убрать либо заменить на что-то красивое
+                alert("name is too long")
                  return false;
-            } //чисто символически
-            makeCategory(value); //Добавить функцию создающую новую категорию в списке категорий
-            
-            // if (event.preventDefault) {
-            //     event.preventDefault();
-            //     event.stopPropagation();
-            // } else { 
-            //     event.cancelBubble = true;
-            //     event.returnValue = false;
-            // };
-
+            } 
+            if (kitOrCat == "cat")
+            makeNewKitCat(value, 'categories', 'urlTree'); //Добавить функцию создающую новую категорию в списке категорий
+            if (kitOrCat == "kit")
+            makeNewKitCat(value, 'Kits', 'kitsList', ["btn", "btn-primary"]);
             complete();
-                return  false;
-            };
+            return  false;
+        };
 
         form.elements.cancel.onclick = function() {
             complete();
@@ -89,9 +112,14 @@ function setFormsButtons(){
         document.body.onkeydown = function(e) {
              e = e || window.event;
             if (e.keyCode == 27) { // escape
-                complete();
+                complete(); 
+                return  false;
             }
-        };
+            if (e.keyCode == 13) { // enter
+                creatingKitCat();
+                return  false;               
+            }
+        };       
    
         form.elements.text.focus(); 
 
@@ -99,6 +127,7 @@ function setFormsButtons(){
             document.body.removeChild(document.getElementById('cover-div'));           
             document.onkeydown = null;
             document.body.removeChild(formCreate);
+
         }
 
         function showCover() { //cover page under  form
@@ -107,50 +136,100 @@ function setFormsButtons(){
              document.body.appendChild(coverDiv);
         }
 
-        function makeCategory(value){
-           // создание длинным путем (не через innerHTML)
-           // var urlCategories = document.getElementById("Categories");
-            var listBody  = document.getElementById("urlTree");
-            var newCategory = document.createElement("LI");
-            var a = document.createElement("A");
-            a.href = "#";
-            var categoryName = document.createTextNode(value);
-            a.appendChild(categoryName);
-            newCategory.appendChild(a);
-            listBody.appendChild(newCategory);
-           
+    // Разделил на две фукции, принимающие необходимые аргументы
+    //     function makeNewKitCat(values){
+    //         var refreshLis = urlCategories.getElementsByTagName("li");
+    //         var listBody  = document.getElementById("urlTree"); 
+    //         var n = 0;
+    //         for (var i=0; i<refreshLis.length; i++){ //проверка на наличие категорий с одинаковым названием
+    //             if (refreshLis[i].firstChild.innerHTML == values) { //проще просто запретить.                  
+    //                 if ( n == 0) {
+    //                     n++;
+    //                     values += "(1)";
+    //                 } else {                        
+    //                     values = values.replace("("+n+")","("+(++n)+")");   //костылец                   
+    //                 };
 
-
-        }
-
+    //             }
+                
+    //         } 
         
+    //     var newCategory = document.createElement("LI");
+    //     var a = document.createElement("A");
+    //     //a.href = "#"; //оно тут не к месту
+    //     var categoryName = document.createTextNode(values);
+    //     a.appendChild(categoryName);
+    //     newCategory.appendChild(a);
+    //     listBody.appendChild(newCategory);   
+    //     }     
+
+    // }
+
+    function compareKitCat(values, colId ){
+        var colId = document.getElementById(colId);
+        var refreshLis = colId.getElementsByTagName("li");        
+        var n = 0;
+        for (var i=0; i<refreshLis.length; i++){ //проверка на наличие категорий с одинаковым названием
+            if (refreshLis[i].firstChild.innerHTML == values) { //проще просто запретить.                  
+                if ( n == 0) {
+                    n++;
+                    values += "(1)";
+                } else {                        
+                    values = values.replace("("+n+")","("+(++n)+")");   //костылец                   
+                };
+            }
+        } 
+       return values;
+    }     
+
+    function makeNewKitCat(values, colId, ulId, classes){
+        values = compareKitCat(values, colId)
+        var listBody  = document.getElementById(ulId); 
+        var newKitCat = document.createElement("LI");
+        var a = document.createElement("A");
+            if(classes) {
+                for ( var i in classes)
+                a.classList.add(classes[i])};
+        //a.href = "#"; //оно тут не к месту
+        var kitCatName = document.createTextNode(values);
+        a.appendChild(kitCatName);
+        newKitCat.appendChild(a);
+        listBody.appendChild(newKitCat);   
     }
 
-     
+
+   }
+
+    function aClick(e){
+         e = e || window.event;
+         var target = e.target || e.srcElement; //  a по которому кликнули.
+         var   li  = target.parentNode; //его родитель
+         var   uls = li.getElementsByTagName("ul") ;
+         var badge = li.getElementsByTagName('span')[0]; // бадж созданный функцией setPlusIcon
+          
+         if (uls.length == 0) return true;
+         if (uls[0].style.display == ""){
+             uls[0].style.display = 'block';
+             li.style.listStyleImage = "url('./images/minus16.png')";
+             badge.style.display = 'none';
+        }else{ 
+            uls[0].style.display = '';
+            li.style.listStyleImage = "url('./images/plus16.png')";
+            badge.style.display = '';
+        }
+
+         e.preventDefault();    
+    }
+
+    
 }
 
- 
+
+
+
+
 
 window.onload = setFormsButtons;
 
-function aClick(e){
-             e = e || window.event;
-             var objA = e.target || e.srcElement; //  a по которому кликнули.
-             var   li  = objA.parentNode; //его родитель
-             var   uls = li.getElementsByTagName("ul") ;
-             var badge = li.getElementsByTagName('span')[0]; // бадж созданный функцией setPlusIcon
-              
-             if (uls.length == 0) return true;
-             if (uls[0].style.display == ""){
-                 uls[0].style.display = 'block';
-                 li.style.listStyleImage = "url('./images/minus16.png')";
-                 badge.style.display = 'none';
-            }else{ 
-                uls[0].style.display = '';
-                li.style.listStyleImage = "url('./images/plus16.png')";
-                badge.style.display = '';
-            }
 
-             e.preventDefault();
-}
 

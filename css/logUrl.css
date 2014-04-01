@@ -32,8 +32,6 @@
   z-index: 9999; 
 }
 
-  
-
   #cover-div {
   position: fixed;
   top: 0;
@@ -44,4 +42,11 @@
   background-color: gray;
   opacity: 0.3;
   filter: alpha(opacity=30);
+}
+.displayNone{
+  display: none;
+}
+
+#categories, #kiCatNav {
+  cursor:pointer;
 }
