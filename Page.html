@@ -12,6 +12,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./javascripts/logurl.js" ></script>
+    <!-- <script type="text/javascript" src="./javascripts/dnd(base).js" ></script> -->
 
     <style type="text/css">    
          
@@ -83,28 +84,28 @@
               <br>
               <!-- категории -->
               <ul class="expandable  list-unstyled" id="urlTree" >
-                <li>
+                <li draggable>
                  <a> Category 1</a>  <!-- баджи можно изменить. либо что бы показывали кол-во ссылок в папке либо количуство подкатегорий в папке -->
                   <ul id="urlTreeb1">
-                    <li><a>subcategory 1</a></li>
-                    <li>
+                    <li draggable><a>subcategory 1</a></li>
+                    <li draggable>
                       <a>subcategory 2 </a>
                       <ul id="urlTreeb2">
-                        <li><a>sub-subcategory 1</a></li>
-                        <li><a>sub-subcategory 2</a>
+                        <li draggable><a>sub-subcategory 1</a></li>
+                        <li draggable ><a>sub-subcategory 2</a>
                          </li>
                       </ul>
                     </li>
                   </ul>
                 </li>
-                <li>
+                <li draggable>
                    <a>Category 2</a> 
                   <ul id="urlTreebranch">
-                    <li><a>subcategory 1</a></li>
-                    <li><a>subcategory 2</a></li>
+                    <li draggable><a>subcategory 1</a></li>
+                    <li draggable><a>subcategory 2</a></li>
                   </ul>
                 </li>
-                <li>
+                <li draggable>
                   <a>Category 3 </a>
                   
                 </li>
@@ -141,29 +142,80 @@
           </div>
         </div>
         <!-- правая часть -->
-        <div class="col-md-8" id="Urls">
-          <h2 class="text-center">List of urls</h2>
+                <div class="col-md-8" id="Urls">
+          <h3 class="text-center">[name of chosen category or kit]</h3>
           <div class="row">
-            <div class="col-md-8" id="urlList">
-              <ol id=" urlList">
-                <li>
-                  <a href="#">http//.. url - или название сайта или поста...</a>
-                </li>
-                <li>
-                  <a href="#">http//.. url - или название сайта или поста...</a>
-                </li>
-                <li>
-                  <a href="#">http//.. url - или название сайта или поста...</a>
-                </li>
-                <li>
-                  <a href="#">http//.. url - или название сайта или поста...</a>
-                </li>
-                <li>
-                  <a href="#">http//.. url - или название сайта или поста...</a>
-                </li>
-              </ol>
+            <div class="col-md-9" id="urlCatList">
+              <!-- <h3 class="text-center">[name of chosen category] </h3> -->
+              <input type="checkbox" value="true" checked>
+              <span> select all</span>
+              <div class="checkbox" checked>
+                <ol class="list-unstyled">
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="http://vk.com/">vkontakte</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="https://twitter.com/">Twitter</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="https://www.facebook.com/">facebook</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="http://www.tut.by/">news</a>
+                    </label>
+                  </li>
+                </ol>
+              </div>
             </div>
-            <div class="col-md-4" id="listDescription">Зарезервированное место. Описание содержания urla и возможно скриншот, увеличивающийся при наведении... или нет
+            <!-- list of Kits urls -->
+            <div class="col-md-9" id="urlKitList" style="display:none">
+              <!-- <h3 class="text-center">[name of chosen kit] </h3> -->
+              <input type="checkbox" value="true" checked>
+              <span> select all</span>
+              <div class="checkbox" checked>
+                <ol class="list-unstyled">
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="http://vk.com/">vkontakte</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="https://twitter.com/">Twitter</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="https://www.facebook.com/">facebook</a>
+                    </label>
+                  </li>
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="http://www.tut.by/">news</a>
+                    </label>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <!-- End list of Kits urls -->
+            <div class="col-md-3" id="UrlMenu">
+              <button class="btn btn-block disabled btn-primary" id="loadUrl">Load Urls</button>
+              <button class="btn btn-block disabled btn-primary" id="delUrl">Delete urls</button>
             </div>
           </div>
           <div class="row">
@@ -175,33 +227,91 @@
               <button class="btn btn-block btn-danger disabled" id="urlAddButton">Add url</button>
             </div>
           </div>
-            <div class="row">
-            <h3 class="text-center">some description</h3>
-            <div class="row">
-              <div class="col-md-12" id="buttonsPanel">
-                <button class="btn btn-primary" id="someId">some button</button>
-                <button class="btn btn-success" id="someId">some button</button>
-                <button class="btn btn-danger" id="someId">some button</button>
-                <button class="btn btn-warning" id="someId">some button</button>
-                <button class="btn btn-info" id="someId">some button</button>
+
+          <!-- нижняя часть окна при нажатии ADD URL -->
+
+          <!--<h2 class="text-center">First kit</h2> -->
+          <div class="row" id="addUrlField" style=":none;">
+            <h3 class="text-center">Description added url</h3>
+            <!-- <div class="col-md-12" id="buttonsPanel">              <button class="btn btn-primary" id="someId">some button</button>              </div> -->
+            
+              <div class="col-md-6" id="someId">
+                <img src="http://lorempixel.com/310/310/" class="img-rounded" alt=" Screenshot " width="320" id="screenshot">
               </div>
+              <div class="col-md-6" id="someId">
+                <div class="form-group">
+                  <div class="controls">
+                    <label class="control-label">Title</label>
+                    <input type="text" class="form-control" placeholder="[set the title]" name="title" maxlength="20">
+                    <br>
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control" placeholder="[set the description or leave default]" rows="4" name="description"></textarea>
+                  </div>
+                </div>
+                <a class="btn pull-right btn-primary" style="width:140px" id="saveUrl">Save</a>
+              </div>
+            
+          </div>
+          <!--конец нижней части окна при нажатии ADD URL -->
+          <!-- нижняя часть окна появляющаяся при нажатии на Url для просмотра информации о нем -->
+          <!--<h2 class="text-center">First kit</h2> -->
+          <div class="row" id="descriptionUrlField" style=":none;">
+            <h3 class="text-center">[clicked url title]</h3>
+            <div class="col-md-6" id="someId">
+              <img src="http://fillmurray.com/310/310" class="img-rounded" alt=" Screenshot " id="screenshot">
             </div>
-            <div class="row" id="someId">
-              <div class="col-md-8" id="someId">
-                <!-- категории -->screenshot<img src="http://lorempixel.com/500/500/">
+            <div class="col-md-6" id="about">
+              <div class="row">
+                <div class="col-md-4" id="buttonsPanel">
+                  <button class="btn btn-primary btn-block" id="someId">edit</button>
+                </div>
+                <div class="col-md-4" id="buttonsPanel">
+                  <button class="btn btn-primary btn-block" id="someId">get Pdf</button>
+                </div>
+                <div class="col-md-4" id="buttonsPanel">
+                  <button class="btn btn-primary btn-block" id="someId">share</button>
+                </div>
+              </div><br>
+              <div>
+                <label class="control-label">Title:</label>
+                <span>[some title]</span><br>
+                <label class="control-label">Url:</label>
+                <span>[some url]</span><br><br>
+                <label class="control-label">Description</label>
+                <p id="desdriptionText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus earum optio ab corporis nisi voluptatum quod ad hic odio qui. Illum omnis repellat quia sapiente nesciunt assumenda numquam. Sequi error!</p>
               </div>
-              <div class="col-md-4" id="someId">description etc. sharing
-              </div>
+              <!-- <a class="btn pull-right btn-primary" style="width:140px" id="saveUrl">save</a> -->
             </div>
           </div>
+          <!--конец нижней части окна появляющейся при нажатии на Url для просмотра информации о нем -->
+          <!-- нижняя часть окна появляющаяся при перетаскивании сюда Урла --><!--<h2 class="text-center">First kit</h2> -->
+          <div class="row" id="collectUrlField" style=":none">
+            <h3 class="text-center">[Pull url here]</h3> 
+            <div class="col-md-9" id="someId">
+              <input type="checkbox" value="true" checked>
+              <span> select all</span>
+              <div class="checkbox" checked>
+                <ol class="list-unstyled">
+                  <li>
+                    <label>
+                      <input type="checkbox" value="true" checked="checked">
+                      <a href="http://vk.com/">vkontakte</a>
+                    </label>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div class="col-md-3" id="about">
+              <button class="btn btn-block disabled btn-info" id="addToCatUrl">add to category</button>
+              <button class="btn disabled btn-block btn-info" id="addToKitUrl">add to kit</button>
+            </div>
+          </div>
+          <!--конец нижней части окна появляющейся при перетаскивании сюда Урла L -->
         </div>
       </div>
     </div>
   </body>
-          
-
-
-  </body>
 
 </html>
+        
 
