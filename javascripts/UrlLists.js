@@ -53,7 +53,7 @@ $(function(){
         newUrlLabel.appendChild(newUrlA);
         newUrl.appendChild(newUrlLabel);        
       
-        $('div#urlCatList>div>ol').appendTo(newUrl);          
+        $('div#urlCatList>div>ol').append(newUrl);          
         //$('div#urlAdd :input#urlInput').val('');
         document.getElementsByName("urlInput")[0].value = null;
         document.getElementsByName('description')[0].value = null;       
@@ -65,7 +65,7 @@ $(function(){
          //пополнение списка урлов новым
       };
       //});
-    return false; 
+ 
     };
 });
 
