@@ -25,9 +25,9 @@ function setFormsButtons(){
         for (var i = 0 ; i < allA.length; i++) {
             allA[i].addEventListener("click", aClick);
         };
-     urlCategories.onmousedown = urlCategories.onselectstart = function() {
-        return false;
-        } // убираем возможность выделения ссылок
+     //urlCategories.onmousedown = urlCategories.onselectstart = function() {
+       // return false;
+       // } // убираем возможность выделения ссылок
 
     //ставим онклики на кнопки
     document.getElementById('newcategoryButton').onclick = function(){ createNewkiCat('Category', "cat")};
@@ -136,34 +136,6 @@ function setFormsButtons(){
              document.body.appendChild(coverDiv);
         }
 
-    // Разделил на две фукции, принимающие необходимые аргументы
-    //     function makeNewKitCat(values){
-    //         var refreshLis = urlCategories.getElementsByTagName("li");
-    //         var listBody  = document.getElementById("urlTree"); 
-    //         var n = 0;
-    //         for (var i=0; i<refreshLis.length; i++){ //проверка на наличие категорий с одинаковым названием
-    //             if (refreshLis[i].firstChild.innerHTML == values) { //проще просто запретить.                  
-    //                 if ( n == 0) {
-    //                     n++;
-    //                     values += "(1)";
-    //                 } else {                        
-    //                     values = values.replace("("+n+")","("+(++n)+")");   //костылец                   
-    //                 };
-
-    //             }
-                
-    //         } 
-        
-    //     var newCategory = document.createElement("LI");
-    //     var a = document.createElement("A");
-    //     //a.href = "#"; //оно тут не к месту
-    //     var categoryName = document.createTextNode(values);
-    //     a.appendChild(categoryName);
-    //     newCategory.appendChild(a);
-    //     listBody.appendChild(newCategory);   
-    //     }     
-
-    // }
 
     function compareKitCat(values, colId ){
         var colId = document.getElementById(colId);
@@ -187,6 +159,8 @@ function setFormsButtons(){
         var listBody  = document.getElementById(ulId); 
         var newKitCat = document.createElement("LI");
         var a = document.createElement("A");
+        a.setAttribute("tabindex", "1");
+     
             if(classes) {
                 for ( var i in classes)
                 a.classList.add(classes[i])};
