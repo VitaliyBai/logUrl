@@ -59,10 +59,14 @@
 #urlTree a {
   margin: 10px;
   padding: 1px 7px 1px 5px;
- 
-   }
+}
 
-   #Urls .row { 
+ #Urls .row { 
     min-height: 100px;
     margin-bottom: 2px;
-   };
+}
+
+.emppty {
+  border:1px solid red;
+  width: 50%;
+}
